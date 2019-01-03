@@ -20,13 +20,17 @@
 
 The Cog theme is set up to utilize the `base => sub-theme` relationship. The steps below will create your custom sub-theme that is cloned from `STARTERKIT/` folder, along with installing the proper dependencies to setup in a matter of minutes. This approach supports release updates, in addition to providing source references for required and optional pieces.
 
-### Create Cog Sub-Theme
+### Create your custom sub-theme
 
-* In your `themes/` directory create the `contrib/` and `custom/` directories
-* Download Cog into the `themes/contrib` folder and enable using `drush en cog`
-* Create the sub-theme with `drush cog "MyTheme"` (if you'd like to customize, first run `drush help cog` to see available options)
-* Enable your new `MyTheme` theme with `drush en mytheme` which is located in `themes/custom`
-* Set `MyTheme` as your default theme `drush config-set system.theme default mytheme`
+* In your `themes/` directory create the `contrib` and `custom` directories
+* In your `modules/contrib` directory clone the development module [Cog tools](https://github.com/acquia-pso/cog_tools) `git clone git@github.com:acquia-pso/cog_tools.git`
+* Enable the cog_tools module `drush pm:enable cog_tools`
+* Create a sub theme with drush `drush generate cog`
+* Answer the questions.
+* Enable your new sub theme. For a theme with the machine name MyTheme: `drush theme:enable mytheme`
+* Enable your new `MyTheme` theme with `drush en mytheme` which is located in `themes/contrib`
+* Disable the cog_tools module `drush pmu cog_tools`
+* Remove Cog Tools `rm -rf docroot/modules/contrib/cog_tools`
 
 ### Setup Local Development
 
